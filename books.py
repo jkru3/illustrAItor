@@ -33,7 +33,6 @@ def get_book_by_title(title):
 
 # Get the content of the book by index starting at 0.
 def get_book_by_index(idx):
-    currentTitle = titles[idx]
     book = cjson[titles[idx]]
     return book
 
@@ -45,7 +44,8 @@ def get_book_sentence(title, idx):
     return sentences[idx]
 
 
-### Return the title's best sentences as an array of strings.
+# Return the title's best sentences as an array of strings.
+# Hard coded. We know its dirty, but it's the best we can do with no NLP and no time
 def get_best_sentences(title):
     bestIdx = []
     if title == "The Maze Runner":
@@ -57,9 +57,9 @@ def get_best_sentences(title):
         bestIdx.append(2)
         bestIdx.append(7)
     elif title == "Harry Potter and The Chamber of Secrets":
-        bestIdx.append(1)
-        bestIdx.append(2)
+        bestIdx.append(0)
         bestIdx.append(3)
+        bestIdx.append(5)
     elif title == "Fahrenheit 451":
         bestIdx.append(0)
         bestIdx.append(1)
@@ -68,8 +68,3 @@ def get_best_sentences(title):
     for i in bestIdx:
         bestSentences.append(get_book_sentence(title, i))
     return bestSentences
-
-
-print(split_paragraph(get_book_by_index(3)))
-print("--------------")
-print(get_best_sentences(titles[3]))

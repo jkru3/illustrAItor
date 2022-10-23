@@ -10,7 +10,7 @@ import stability_sdk.interfaces.gooseai.generation.generation_pb2 as generation
 os.environ['STABILITY_HOST'] = 'grpc.stability.ai:443'
 # To get your API key, visit https://beta.dreamstudio.ai/membership
 
-os.environ['STABILITY_KEY'] = 'sk-ApVWI7G5GMiVWkkjOHlcXuDBsmvwYKWjJEou3ell68H0WOaU'
+os.environ['STABILITY_KEY'] = 'sk-PvRC2INep84w7iMJtajedVpmTqnwDiGOCtyHfM2hOKbZ0lBS'
 
 stability_api = client.StabilityInference(
     key=os.environ['STABILITY_KEY'],
@@ -22,8 +22,8 @@ stability_api = client.StabilityInference(
 def make_image(title, p, style):
     # the object returned is a python generator
     answers = stability_api.generate(
-        prompt=title + ": " + p + ", in the style of " + style,
-        steps=50,  # defaults to 50 if not specified
+        prompt=title + ": " + p + ". In the style of " + style,
+        steps=55,  # defaults to 50 if not specified
     )
     # iterating over the generator produces the api response
     for resp in answers:
@@ -36,7 +36,7 @@ def make_image(title, p, style):
                 # img = Image.open(io.BytesIO(artifact.binary))
                 # img.show()
                 img = Image.open(io.BytesIO(artifact.binary))
-                return img  # I think this returns a Jpeg
+                return img.resize((250, 250))  # I think this returns a Jpeg
 
 
 def display_image(img):
