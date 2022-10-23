@@ -4,6 +4,4 @@ A DubHacks hackathon project; makes reading more enjoyable by complimenting book
 NOTE: you must have **Tkinter**, **pillow**, and **stability-sdk** installed to run this program
 Use:
 
- ``pip install Tkinter
-  pip install pillow
-  pip install stability-sdk``
+``pip install Tkinter pillow stability-sdk``
